@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
 
   s.source_files = 'Sources/__PRODUCT_NAME__/**/*.swift'
-  s.resources = 'Sources/__PRODUCT_NAME__/**/*.{storyboard,xcassets, strings,imageset,png}'
+  s.resources = 'Sources/__PRODUCT_NAME__/**/*.{storyboard,xcassets,strings,imageset,png}'
 
   # TODO: Add dependencies
   # NOTE: The __PRODUCT_NAME__ target in the Podfile must include the same dependencies.
