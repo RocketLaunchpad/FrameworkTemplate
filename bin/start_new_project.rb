@@ -7,6 +7,9 @@ require 'Pathname'
 # The path to the sample project, relative to this file.
 SRC_DIR = File.join(Pathname(__FILE__).dirname, "../src/__PRODUCT_NAME__")
 
+# The current user's real name
+DEFAULT_AUTHOR = %x[dscl . -read $HOME RealName | sed -n 's/^ //g;2p'].strip!
+
 class SymbolExpansion
   def initialize
     # map from regexp to substitution value
@@ -211,6 +214,13 @@ PROD_NAME
       end
   }
 
+  puts <<AUTHOR
+
+Please enter your name.
+
+AUTHOR
+
+  author = get_user_input("Your name", DEFAULT_AUTHOR)
   now = Time.now
   date = now.strftime("%Y-%m-%d")
   year = now.strftime("%Y")
@@ -219,6 +229,7 @@ PROD_NAME
   symbols.set_symbol_value(:organization_name, organization_name)
   symbols.set_symbol_value(:organization_id, organization_id)
   symbols.set_symbol_value(:product_name, product_name)
+  symbols.set_symbol_value(:author, author)
   symbols.set_symbol_value(:date, date)
   symbols.set_symbol_value(:year, year)
 
@@ -260,7 +271,7 @@ Your new project has been generated. You should now do the following:
 
   cd #{dst_path}
   pod install
-  open #{symbols.value_for_symbol(:product_name)}.xcodeproj
+  open #{symbols.value_for_symbol(:product_name)}.xcworkspace
 
 Then, in Xcode, you should verify that you can build and run the project.
 
