@@ -5,7 +5,7 @@ require 'FileUtils'
 require 'Pathname'
 
 # The path to the sample project, relative to this file.
-SRC_DIR = File.join(Pathname(__FILE__).dirname, "src/__PRODUCT_NAME__")
+SRC_DIR = File.join(Pathname(__FILE__).dirname, "../src/__PRODUCT_NAME__")
 
 class SymbolExpansion
   def initialize
@@ -63,6 +63,7 @@ class ProjectBuilder
     @dirs_to_skip = Regexp.union(/^xcuserdata$/, /^Pods$/)
     @files_to_skip = Regexp.union(/^.DS_Store$/, /^Podfile.lock$/)
     @quote_replacements_in = Regexp.union(/^project\.pbxproj$/)
+    @skip_expansion_in = Regexp.union(/^IDETemplateMacros.plist$/)
   end
 
   def run
@@ -74,6 +75,7 @@ class ProjectBuilder
   private
 
     def find_files
+      puts "find_files in #{@src_dir}"
       Find.find(@src_dir) do |path|
         basename = File.basename(path)
 
@@ -101,6 +103,7 @@ class ProjectBuilder
     def process_file(src_rpath)
       input_filename = File.join(@src_dir, src_rpath)
       quote_replacement = @quote_replacements_in =~ File.basename(input_filename)
+      skip_expansion = @skip_expansion_in =~ File.basename(input_filename)
 
       dst_rpath = @symbols.process_string(src_rpath)
       dst_filename = File.join(@dst_dir, dst_rpath)
@@ -111,7 +114,11 @@ class ProjectBuilder
       puts "Writing #{dst_filename}"
       File.open(dst_filename, "w") do |output_fh|
         File.open(input_filename).each do |line|
-          output_line = @symbols.process_string(line, quote_replacement)
+          if skip_expansion
+            output_line = line
+          else
+            output_line = @symbols.process_string(line, quote_replacement)
+          end
           output_fh.write(output_line)
         end
       end
@@ -156,13 +163,13 @@ def build_symbols_from_user_input()
   puts <<ORG_NAME
 
 Please specify an organization name. This used in the copyright notice in the
-header comment of each source file. It should not end with a period.
+header comment of each source file.
 
-Example: Rocket Insights, Inc
+Example: Rocket Insights, Inc.
 
 ORG_NAME
 
-  organization_name = get_user_input("Organization name", "Rocket Insights, Inc")
+  organization_name = get_user_input("Organization name", "Rocket Insights, Inc.")
 
   puts <<ORG_ID
 
@@ -204,23 +211,14 @@ PROD_NAME
       end
   }
 
-  puts <<AUTHOR
-
-Please enter your name. This appears in the header comment of each source file.
-
-AUTHOR
-
-  author = get_user_input("Your name")
-
   now = Time.now
-  date = now.strftime("%-m/%-d/%y")
+  date = now.strftime("%Y-%m-%d")
   year = now.strftime("%Y")
 
   symbols = SymbolExpansion.new()
   symbols.set_symbol_value(:organization_name, organization_name)
   symbols.set_symbol_value(:organization_id, organization_id)
   symbols.set_symbol_value(:product_name, product_name)
-  symbols.set_symbol_value(:author, author)
   symbols.set_symbol_value(:date, date)
   symbols.set_symbol_value(:year, year)
 
