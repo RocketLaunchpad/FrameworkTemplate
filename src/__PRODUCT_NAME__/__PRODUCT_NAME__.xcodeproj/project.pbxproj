@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,10 +34,10 @@
 /* Begin PBXFileReference section */
 		16074AB123E379D909F84C4D /* Pods-__PRODUCT_NAME__Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__PRODUCT_NAME__Example.release.xcconfig"; path = "Target Support Files/Pods-__PRODUCT_NAME__Example/Pods-__PRODUCT_NAME__Example.release.xcconfig"; sourceTree = "<group>"; };
 		16125B5724A52E5C49B49E19 /* Pods-__PRODUCT_NAME__Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__PRODUCT_NAME__Tests.debug.xcconfig"; path = "Target Support Files/Pods-__PRODUCT_NAME__Tests/Pods-__PRODUCT_NAME__Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		34456A5903825386BC47A78D /* Pods___PRODUCT_NAME__Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods___PRODUCT_NAME__Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7540AE298FD2FA679954853F /* Pods___PRODUCT_NAME__Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods___PRODUCT_NAME__Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34456A5903825386BC47A78D /* Pods___PRODUCT_NAME__Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___PRODUCT_NAME__Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7540AE298FD2FA679954853F /* Pods___PRODUCT_NAME__Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___PRODUCT_NAME__Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C288096F34AB0C3BA60C28 /* Pods-__PRODUCT_NAME__.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__PRODUCT_NAME__.debug.xcconfig"; path = "Target Support Files/Pods-__PRODUCT_NAME__/Pods-__PRODUCT_NAME__.debug.xcconfig"; sourceTree = "<group>"; };
-		BFC5AA0B14E538B41E7B102E /* Pods___PRODUCT_NAME__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods___PRODUCT_NAME__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC5AA0B14E538B41E7B102E /* Pods___PRODUCT_NAME__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___PRODUCT_NAME__.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C055B6BCA00F7194ABEFC87C /* Pods-__PRODUCT_NAME__.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-__PRODUCT_NAME__.release.xcconfig"; path = "Target Support Files/Pods-__PRODUCT_NAME__/Pods-__PRODUCT_NAME__.release.xcconfig"; sourceTree = "<group>"; };
 		C52A633322F71EB900A0F7BA /* __PRODUCT_NAME__.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = __PRODUCT_NAME__.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52A633622F71EB900A0F7BA /* __PRODUCT_NAME__.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = __PRODUCT_NAME__.h; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 				16125B5724A52E5C49B49E19 /* Pods-__PRODUCT_NAME__Tests.debug.xcconfig */,
 				E4BB82D73594A188AFD0C5E9 /* Pods-__PRODUCT_NAME__Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -656,7 +655,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HHWT4HF657;
-				INFOPLIST_FILE = __PRODUCT_NAME__Tests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/__PRODUCT_NAME__Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -676,7 +675,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HHWT4HF657;
-				INFOPLIST_FILE = __PRODUCT_NAME__Tests/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/__PRODUCT_NAME__Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
