@@ -97,6 +97,7 @@ class ProjectBuilder
             s = Pathname.new(@src_dir)
             t = Pathname.new(path)
             rpath = t.relative_path_from(s).to_s
+            # puts "Including file #{rpath}"
             yield rpath
           end
         end
@@ -272,7 +273,14 @@ Your new project has been generated. You should now do the following:
   cd #{dst_path}
   open #{symbols.value_for_symbol(:product_name)}.xcodeproj
 
-Then, in Xcode, you should verify that you can build and run the project.
+Then, in Xcode, verify that you can build and run the project.
+
+To initialize a Git repository in this directory:
+
+  cd #{dst_path}
+  git init
+  git add .
+  git commit -m "Initial commit"
 
 OUTRO
 end
