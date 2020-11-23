@@ -270,8 +270,7 @@ INTRO
 Your new project has been generated. You should now do the following:
 
   cd #{dst_path}
-  pod install
-  open #{symbols.value_for_symbol(:product_name)}.xcworkspace
+  open #{symbols.value_for_symbol(:product_name)}.xcodeproj
 
 Then, in Xcode, you should verify that you can build and run the project.
 
