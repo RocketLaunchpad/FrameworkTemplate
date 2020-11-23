@@ -2,7 +2,7 @@
 //  Package.swift
 //  __PRODUCT_NAME__
 //
-//  Copyright (c) 2020 __ORGANIZATION_NAME__
+//  Copyright (c) __YEAR__ __ORGANIZATION_NAME__
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files (the "Software"),
