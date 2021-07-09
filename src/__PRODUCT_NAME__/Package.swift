@@ -1,3 +1,4 @@
+// swift-tools-version:5.3
 //
 //  Package.swift
 //  __PRODUCT_NAME__
@@ -37,9 +38,11 @@ let package = Package(
     targets: [
         .target(
             name: "__PRODUCT_NAME__",
-            dependencies: []),
+            dependencies: [],
+            exclude: ["Info.plist"]),
         .testTarget(
             name: "__PRODUCT_NAME__Tests",
-            dependencies: ["__PRODUCT_NAME__"]),
+            dependencies: ["__PRODUCT_NAME__"],
+            exclude: ["Info.plist"]),
     ]
 )
